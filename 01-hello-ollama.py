@@ -1,4 +1,5 @@
-from langchain_ollama import ChatOllama
+from langchain.chat_models import init_chat_model  # ty: ignore
+from langchain_ollama import ChatOllama  # ty: ignore
 
 # 旧方法
 model = ChatOllama(
@@ -10,7 +11,6 @@ for chuck in model.stream("来一段唐诗"):
 print("\n" + "=" * 50 + "\n")
 
 # 新方法(推荐)
-from langchain.chat_models import init_chat_model
 
 model = init_chat_model(
     model="gemma3:4b",

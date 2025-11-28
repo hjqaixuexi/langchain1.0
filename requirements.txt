@@ -3,11 +3,15 @@ aiohappyeyeballs==2.6.1
 aiohttp==3.13.2
 aiosignal==1.4.0
 annotated-types==0.7.0
+anthropic==0.75.0
 anyio==4.11.0
 attrs==25.4.0
 backoff==2.2.1
 bcrypt==5.0.0
 beautifulsoup4==4.14.2
+blockbuster==1.5.25
+bracex==2.6
+bs4==0.0.2
 build==1.3.0
 cachetools==6.2.2
 certifi==2025.11.12
@@ -15,22 +19,27 @@ cffi==2.0.0
 charset-normalizer==3.4.4
 chromadb==1.3.5
 click==8.3.1
+cloudpickle==3.1.2
 colorama==0.4.6
 coloredlogs==15.0.1
-cryptography==46.0.3
+cryptography==44.0.3
 dataclasses-json==0.6.7
+deepagents==0.2.8
 distro==1.9.0
+docstring-parser==0.17.0
 durationpy==0.10
 emoji==2.15.0
 filelock==3.20.0
 filetype==1.2.0
 flatbuffers==25.9.23
+forbiddenfruit==0.1.4
 frozenlist==1.8.0
 fsspec==2025.10.0
 google-auth==2.43.0
 googleapis-common-protos==1.72.0
 greenlet==3.2.4
 grpcio==1.76.0
+grpcio-tools==1.75.1
 h11==0.16.0
 html5lib==1.1
 httpcore==1.0.9
@@ -48,9 +57,11 @@ joblib==1.5.2
 jsonpatch==1.33
 jsonpointer==3.0.0
 jsonschema==4.25.1
+jsonschema-rs==0.29.1
 jsonschema-specifications==2025.9.1
 kubernetes==34.1.0
 langchain==1.1.0
+langchain-anthropic==1.2.0
 langchain-chroma==1.0.0
 langchain-classic==1.0.0
 langchain-community==0.4.1
@@ -59,13 +70,17 @@ langchain-deepseek==1.0.1
 langchain-huggingface==1.1.0
 langchain-ollama==1.0.0
 langchain-openai==1.1.0
+langchain-tavily==0.2.13
 langchain-text-splitters==1.0.0
 langdetect==1.0.9
 langgraph==1.0.4
+langgraph-api==0.5.27
 langgraph-checkpoint==3.0.1
+langgraph-cli==0.4.7
 langgraph-prebuilt==1.0.5
+langgraph-runtime-inmem==0.19.0
 langgraph-sdk==0.2.10
-langsmith==0.4.48
+langsmith==0.4.49
 lxml==6.0.2
 markdown-it-py==4.0.0
 markupsafe==3.0.3
@@ -77,7 +92,7 @@ multidict==6.7.0
 mypy-extensions==1.1.0
 networkx==3.6
 nltk==3.9.2
-numpy==2.2.6
+numpy==2.3.5
 oauthlib==3.3.1
 olefile==0.47
 ollama==0.6.1
@@ -86,6 +101,7 @@ openai==2.8.1
 opentelemetry-api==1.38.0
 opentelemetry-exporter-otlp-proto-common==1.38.0
 opentelemetry-exporter-otlp-proto-grpc==1.38.0
+opentelemetry-exporter-otlp-proto-http==1.38.0
 opentelemetry-proto==1.38.0
 opentelemetry-sdk==1.38.0
 opentelemetry-semantic-conventions==0.59b0
@@ -102,10 +118,11 @@ pyasn1==0.6.1
 pyasn1-modules==0.4.2
 pybase64==1.4.2
 pycparser==2.23
-pydantic==2.12.4
+pydantic==2.12.5
 pydantic-core==2.41.5
 pydantic-settings==2.12.0
 pygments==2.19.2
+pyjwt==2.10.1
 pypdf==6.4.0
 pypika==0.48.9
 pyproject-hooks==1.2.0
@@ -135,7 +152,11 @@ six==1.17.0
 sniffio==1.3.1
 soupsieve==2.8
 sqlalchemy==2.0.44
+sse-starlette==2.1.3
+starlette==0.50.0
+structlog==25.5.0
 sympy==1.14.0
+tavily-python==0.7.13
 tenacity==9.1.2
 threadpoolctl==3.6.0
 tiktoken==0.12.0
@@ -145,6 +166,7 @@ torchaudio==2.9.1
 torchvision==0.24.1
 tqdm==4.67.1
 transformers==4.57.3
+truststore==0.10.4
 typer==0.20.0
 typing-extensions==4.15.0
 typing-inspect==0.9.0
@@ -154,6 +176,7 @@ unstructured-client==0.42.4
 urllib3==2.3.0
 uvicorn==0.38.0
 watchfiles==1.1.1
+wcmatch==10.1
 webencodings==0.5.1
 websocket-client==1.9.0
 websockets==15.0.1
@@ -169,15 +192,22 @@ aiofiles==25.1.0
 aiohappyeyeballs==2.6.1
     # via aiohttp
 aiohttp==3.13.2
-    # via langchain-community
+    # via
+    #   langchain-community
+    #   langchain-tavily
 aiosignal==1.4.0
     # via aiohttp
 annotated-types==0.7.0
     # via pydantic
+anthropic==0.75.0
+    # via langchain-anthropic
 anyio==4.11.0
     # via
+    #   anthropic
     #   httpx
     #   openai
+    #   sse-starlette
+    #   starlette
     #   watchfiles
 attrs==25.4.0
     # via
@@ -191,7 +221,15 @@ backoff==2.2.1
 bcrypt==5.0.0
     # via chromadb
 beautifulsoup4==4.14.2
-    # via unstructured
+    # via
+    #   bs4
+    #   unstructured
+blockbuster==1.5.25
+    # via langgraph-runtime-inmem
+bracex==2.6
+    # via wcmatch
+bs4==0.0.2
+    # via langchain1-0 (pyproject.toml)
 build==1.3.0
     # via chromadb
 cachetools==6.2.2
@@ -214,10 +252,13 @@ chromadb==1.3.5
     #   langchain-chroma
 click==8.3.1
     # via
+    #   langgraph-cli
     #   nltk
     #   python-oxmsg
     #   typer
     #   uvicorn
+cloudpickle==3.1.2
+    # via langgraph-api
 colorama==0.4.6
     # via
     #   build
@@ -226,16 +267,23 @@ colorama==0.4.6
     #   uvicorn
 coloredlogs==15.0.1
     # via onnxruntime
-cryptography==46.0.3
-    # via unstructured-client
+cryptography==44.0.3
+    # via
+    #   langgraph-api
+    #   unstructured-client
 dataclasses-json==0.6.7
     # via
     #   langchain-community
     #   unstructured
+deepagents==0.2.8
+    # via langchain1-0 (pyproject.toml)
 distro==1.9.0
     # via
+    #   anthropic
     #   openai
     #   posthog
+docstring-parser==0.17.0
+    # via anthropic
 durationpy==0.10
     # via kubernetes
 emoji==2.15.0
@@ -249,6 +297,8 @@ filetype==1.2.0
     # via unstructured
 flatbuffers==25.9.23
     # via onnxruntime
+forbiddenfruit==0.1.4
+    # via blockbuster
 frozenlist==1.8.0
     # via
     #   aiohttp
@@ -260,13 +310,19 @@ fsspec==2025.10.0
 google-auth==2.43.0
     # via kubernetes
 googleapis-common-protos==1.72.0
-    # via opentelemetry-exporter-otlp-proto-grpc
+    # via
+    #   opentelemetry-exporter-otlp-proto-grpc
+    #   opentelemetry-exporter-otlp-proto-http
 greenlet==3.2.4
     # via sqlalchemy
 grpcio==1.76.0
     # via
     #   chromadb
+    #   grpcio-tools
+    #   langgraph-api
     #   opentelemetry-exporter-otlp-proto-grpc
+grpcio-tools==1.75.1
+    # via langgraph-api
 h11==0.16.0
     # via
     #   httpcore
@@ -281,11 +337,14 @@ httptools==0.7.1
     # via uvicorn
 httpx==0.28.1
     # via
+    #   anthropic
     #   chromadb
+    #   langgraph-api
     #   langgraph-sdk
     #   langsmith
     #   ollama
     #   openai
+    #   tavily-python
     #   unstructured-client
 httpx-sse==0.4.3
     # via langchain-community
@@ -310,7 +369,9 @@ importlib-resources==6.5.2
 jinja2==3.1.6
     # via torch
 jiter==0.12.0
-    # via openai
+    # via
+    #   anthropic
+    #   openai
 joblib==1.5.2
     # via
     #   nltk
@@ -321,12 +382,19 @@ jsonpointer==3.0.0
     # via jsonpatch
 jsonschema==4.25.1
     # via chromadb
+jsonschema-rs==0.29.1
+    # via langgraph-api
 jsonschema-specifications==2025.9.1
     # via jsonschema
 kubernetes==34.1.0
     # via chromadb
 langchain==1.1.0
-    # via langchain1-0 (pyproject.toml)
+    # via
+    #   langchain1-0 (pyproject.toml)
+    #   deepagents
+    #   langchain-tavily
+langchain-anthropic==1.2.0
+    # via deepagents
 langchain-chroma==1.0.0
     # via langchain1-0 (pyproject.toml)
 langchain-classic==1.0.0
@@ -335,7 +403,9 @@ langchain-community==0.4.1
     # via langchain1-0 (pyproject.toml)
 langchain-core==1.1.0
     # via
+    #   deepagents
     #   langchain
+    #   langchain-anthropic
     #   langchain-chroma
     #   langchain-classic
     #   langchain-community
@@ -343,8 +413,10 @@ langchain-core==1.1.0
     #   langchain-huggingface
     #   langchain-ollama
     #   langchain-openai
+    #   langchain-tavily
     #   langchain-text-splitters
     #   langgraph
+    #   langgraph-api
     #   langgraph-checkpoint
     #   langgraph-prebuilt
 langchain-deepseek==1.0.1
@@ -355,25 +427,44 @@ langchain-ollama==1.0.0
     # via langchain1-0 (pyproject.toml)
 langchain-openai==1.1.0
     # via langchain-deepseek
+langchain-tavily==0.2.13
+    # via langchain1-0 (pyproject.toml)
 langchain-text-splitters==1.0.0
     # via langchain-classic
 langdetect==1.0.9
     # via unstructured
 langgraph==1.0.4
-    # via langchain
+    # via
+    #   langchain
+    #   langgraph-api
+    #   langgraph-runtime-inmem
+langgraph-api==0.5.27
+    # via langgraph-cli
 langgraph-checkpoint==3.0.1
     # via
     #   langgraph
+    #   langgraph-api
     #   langgraph-prebuilt
+    #   langgraph-runtime-inmem
+langgraph-cli==0.4.7
+    # via langchain1-0 (pyproject.toml)
 langgraph-prebuilt==1.0.5
     # via langgraph
+langgraph-runtime-inmem==0.19.0
+    # via
+    #   langgraph-api
+    #   langgraph-cli
 langgraph-sdk==0.2.10
-    # via langgraph
-langsmith==0.4.48
+    # via
+    #   langgraph
+    #   langgraph-api
+    #   langgraph-cli
+langsmith==0.4.49
     # via
     #   langchain-classic
     #   langchain-community
     #   langchain-core
+    #   langgraph-api
 lxml==6.0.2
     # via unstructured
 markdown-it-py==4.0.0
@@ -422,26 +513,36 @@ openai==2.8.1
 opentelemetry-api==1.38.0
     # via
     #   chromadb
+    #   langgraph-api
     #   opentelemetry-exporter-otlp-proto-grpc
+    #   opentelemetry-exporter-otlp-proto-http
     #   opentelemetry-sdk
     #   opentelemetry-semantic-conventions
 opentelemetry-exporter-otlp-proto-common==1.38.0
-    # via opentelemetry-exporter-otlp-proto-grpc
+    # via
+    #   opentelemetry-exporter-otlp-proto-grpc
+    #   opentelemetry-exporter-otlp-proto-http
 opentelemetry-exporter-otlp-proto-grpc==1.38.0
     # via chromadb
+opentelemetry-exporter-otlp-proto-http==1.38.0
+    # via langgraph-api
 opentelemetry-proto==1.38.0
     # via
     #   opentelemetry-exporter-otlp-proto-common
     #   opentelemetry-exporter-otlp-proto-grpc
+    #   opentelemetry-exporter-otlp-proto-http
 opentelemetry-sdk==1.38.0
     # via
     #   chromadb
+    #   langgraph-api
     #   opentelemetry-exporter-otlp-proto-grpc
+    #   opentelemetry-exporter-otlp-proto-http
 opentelemetry-semantic-conventions==0.59b0
     # via opentelemetry-sdk
 orjson==3.11.4
     # via
     #   chromadb
+    #   langgraph-api
     #   langgraph-sdk
     #   langsmith
 ormsgpack==1.12.0
@@ -470,6 +571,8 @@ propcache==0.4.1
 protobuf==6.33.1
     # via
     #   googleapis-common-protos
+    #   grpcio-tools
+    #   langgraph-api
     #   onnxruntime
     #   opentelemetry-proto
 psutil==7.1.3
@@ -484,10 +587,12 @@ pybase64==1.4.2
     # via chromadb
 pycparser==2.23
     # via cffi
-pydantic==2.12.4
+pydantic==2.12.5
     # via
+    #   anthropic
     #   chromadb
     #   langchain
+    #   langchain-anthropic
     #   langchain-classic
     #   langchain-core
     #   langgraph
@@ -502,6 +607,8 @@ pydantic-settings==2.12.0
     # via langchain-community
 pygments==2.19.2
     # via rich
+pyjwt==2.10.1
+    # via langgraph-api
 pypdf==6.4.0
     # via
     #   langchain1-0 (pyproject.toml)
@@ -518,6 +625,7 @@ python-dateutil==2.9.0.post0
     #   posthog
 python-dotenv==1.2.1
     # via
+    #   langgraph-cli
     #   pydantic-settings
     #   uvicorn
 python-iso639==2025.11.16
@@ -553,10 +661,13 @@ requests==2.32.5
     #   kubernetes
     #   langchain-classic
     #   langchain-community
+    #   langchain-tavily
     #   langsmith
+    #   opentelemetry-exporter-otlp-proto-http
     #   posthog
     #   requests-oauthlib
     #   requests-toolbelt
+    #   tavily-python
     #   tiktoken
     #   transformers
     #   unstructured
@@ -587,7 +698,9 @@ scipy==1.16.3
 sentence-transformers==5.1.2
     # via langchain1-0 (pyproject.toml)
 setuptools==80.9.0
-    # via torch
+    # via
+    #   grpcio-tools
+    #   torch
 shellingham==1.5.4
     # via typer
 six==1.17.0
@@ -599,6 +712,7 @@ six==1.17.0
     #   python-dateutil
 sniffio==1.3.1
     # via
+    #   anthropic
     #   anyio
     #   openai
 soupsieve==2.8
@@ -607,19 +721,37 @@ sqlalchemy==2.0.44
     # via
     #   langchain-classic
     #   langchain-community
+sse-starlette==2.1.3
+    # via
+    #   langgraph-api
+    #   langgraph-runtime-inmem
+starlette==0.50.0
+    # via
+    #   langgraph-api
+    #   langgraph-runtime-inmem
+    #   sse-starlette
+structlog==25.5.0
+    # via
+    #   langgraph-api
+    #   langgraph-runtime-inmem
 sympy==1.14.0
     # via
     #   onnxruntime
     #   torch
+tavily-python==0.7.13
+    # via langchain1-0 (pyproject.toml)
 tenacity==9.1.2
     # via
     #   chromadb
     #   langchain-community
     #   langchain-core
+    #   langgraph-api
 threadpoolctl==3.6.0
     # via scikit-learn
 tiktoken==0.12.0
-    # via langchain-openai
+    # via
+    #   langchain-openai
+    #   tavily-python
 tokenizers==0.22.1
     # via
     #   chromadb
@@ -646,11 +778,14 @@ tqdm==4.67.1
     #   unstructured
 transformers==4.57.3
     # via sentence-transformers
+truststore==0.10.4
+    # via langgraph-api
 typer==0.20.0
     # via chromadb
 typing-extensions==4.15.0
     # via
     #   aiosignal
+    #   anthropic
     #   anyio
     #   beautifulsoup4
     #   chromadb
@@ -660,6 +795,7 @@ typing-extensions==4.15.0
     #   openai
     #   opentelemetry-api
     #   opentelemetry-exporter-otlp-proto-grpc
+    #   opentelemetry-exporter-otlp-proto-http
     #   opentelemetry-sdk
     #   opentelemetry-semantic-conventions
     #   pydantic
@@ -668,6 +804,7 @@ typing-extensions==4.15.0
     #   referencing
     #   sentence-transformers
     #   sqlalchemy
+    #   starlette
     #   torch
     #   typer
     #   typing-inspect
@@ -688,9 +825,16 @@ urllib3==2.3.0
     #   kubernetes
     #   requests
 uvicorn==0.38.0
-    # via chromadb
+    # via
+    #   chromadb
+    #   langgraph-api
+    #   sse-starlette
 watchfiles==1.1.1
-    # via uvicorn
+    # via
+    #   langgraph-api
+    #   uvicorn
+wcmatch==10.1
+    # via deepagents
 webencodings==0.5.1
     # via html5lib
 websocket-client==1.9.0

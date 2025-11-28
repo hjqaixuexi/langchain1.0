@@ -1,13 +1,16 @@
+import bs4  # 读取网页
 import torch
 from langchain_chroma import Chroma  # ty: ignore
-from langchain_community.document_loaders import PyPDFLoader  # ty: ignore
+from langchain_community.document_loaders import WebBaseLoader  # ty: ignore
 from langchain_huggingface import HuggingFaceEmbeddings  # ty: ignore
 from langchain_text_splitters import RecursiveCharacterTextSplitter  # ty: ignore
 
-# 1.读取文本
-pdf_documents = PyPDFLoader("分数阶反卷积的高分辨力目标亮点提取.pdf").load()
-# print(len(pdf_documents))  # 打印多少页
-# print(pdf_documents[0])  # 打印第一页内容
+# 1.读取网页
+page_url = "https://news.cctv.cn/2025/08/07/ARTIwHXTjBUTWQHIhY3pmv7Z250807.shtml"
+bs4_strainer = bs4.SoupStrainer()
+loader = WebBaseLoader(web_path=(page_url), bs_kwargs={"parse_only": bs4_strainer})
+
+docs = loader.load()
 
 # 2.文本切块
 text_splitter = RecursiveCharacterTextSplitter(
@@ -15,9 +18,7 @@ text_splitter = RecursiveCharacterTextSplitter(
     chunk_overlap=200,
     add_start_index=True,  # 给块添加索引
 )
-all_splits = text_splitter.split_documents(pdf_documents)  # list[Document]
-# print(len(all_splits))
-# print(all_splits[0])
+all_splits = text_splitter.split_documents(docs)  # list[Document]
 
 # 3.加载嵌入模型
 embedding = HuggingFaceEmbeddings(
@@ -27,15 +28,12 @@ embedding = HuggingFaceEmbeddings(
         "normalize_embeddings": True
     },  # 输出归一化向量，更适合余弦相似度计算
 )
-# vector_0 = embedding.embed_query(all_splits[0].page_content)
-# print(len(vector_0))
-# print(vector_0)
 
 # 4.向量和文本块的存储
 vector_store = Chroma(
-    collection_name="example",
+    collection_name="example_rag",
     embedding_function=embedding,
-    persist_directory="./chroma_langchain_db",  # 目录
+    persist_directory="./chroma_rag_db",  # 目录
 )
 ids = vector_store.add_documents(all_splits)  # 文本加向量
 print(len(ids))

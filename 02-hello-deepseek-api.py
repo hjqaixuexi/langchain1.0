@@ -15,7 +15,7 @@
 
 # 新方法
 from dotenv import load_dotenv
-from langchain.chat_models import init_chat_model
+from langchain.chat_models import init_chat_model  # ty: ignore
 
 load_dotenv()
 # 初始化聊天模型

@@ -11,3 +11,5 @@ wheels/
 
 # 忽略嵌入模型目录
 bge-base-zh-v1.5/
+
+my-chat-ui/
