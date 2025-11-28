@@ -13,3 +13,11 @@ wheels/
 bge-base-zh-v1.5/
 
 my-chat-ui/
+
+chroma_rag_db/
+
+chroma_langchain_db
+
+.env
+
+Chinook.db

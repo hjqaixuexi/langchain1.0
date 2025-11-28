@@ -1,10 +1,10 @@
 from typing import List
 
 import torch
-from langchain_chroma import Chroma
-from langchain_core.documents import Document
-from langchain_core.runnables import chain
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_chroma import Chroma  # ty: ignore
+from langchain_core.documents import Document  # ty: ignore
+from langchain_core.runnables import chain  # ty: ignore
+from langchain_huggingface import HuggingFaceEmbeddings  # ty: ignore
 
 # 1.构建嵌入模型
 embedding = HuggingFaceEmbeddings(
